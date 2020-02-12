@@ -7,6 +7,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ImageMinWebpackPlugin = require('imagemin-webpack-plugin').default;
 const imageminMozjpeg = require ('imagemin-mozjpeg');
+const imageminPngquant = require('imagemin-pngquant');
 
 const isDev = process.env.NODE_ENV === 'development';
 const makeCopiesOfFiles = (path) => {
@@ -45,7 +46,8 @@ module.exports = {
         imageminMozjpeg({
           quality: 60,
           progressive: true
-        })
+        }),
+        imageminPngquant()
       ]
     }),
     new MiniCssExtractPlugin({
